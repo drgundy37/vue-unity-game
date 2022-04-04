@@ -1,17 +1,19 @@
 {
-  "name": "vue-unity-game",
+  "name": "roadtrip",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
     "element-ui": "^2.15.6",
     "express": "^4.17.3",
+    "mongoose": "^6.2.7",
     "mysql2": "^2.3.3",
     "sass": "^1.49.8",
     "sass-loader": "10.1.1",
@@ -19,7 +21,8 @@
     "sequelize-cli": "^6.4.1",
     "serve-static": "^1.14.2",
     "unity-webgl": "^2.0.0",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-metamask": "^2.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.13",
