@@ -11,7 +11,7 @@ app.use("/", router);
 app.use(cors());
 var mongoose = require('mongoose');
 const { query } = require("express");
-mongoose.connect('mongodb+srv://jackadmin:toyFgWwpzyVKRRLq@mongotest.cmznf.mongodb.net/posttest');
+mongoose.connect('mongodb+srv://<username>:<password>@mongotest.cmznf.mongodb.net/posttest');
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 
