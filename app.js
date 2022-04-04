@@ -28,10 +28,10 @@ var nameSchema = new mongoose.Schema({
 var users = mongoose.model("User", nameSchema);
 
 
-//load game
-app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/index3.html");
-});
+//load game - for use not in Vue
+// app.get("/", (req, res) => {
+//     res.sendFile(__dirname + "/index3.html");
+// });
 
 
 // receiving info from Unity on the endpoint
@@ -141,8 +141,6 @@ app.get("/user/:id/", (req, res) => {
     });
 
 });       
-
-
 
 
 
