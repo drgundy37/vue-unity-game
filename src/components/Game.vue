@@ -5,6 +5,7 @@
       :width="`${window.width}px`"
       :height="`${window.height}px`"
     />
+    <button @click="sendGameMessage">Send1</button>
   </div>
 </template>
 
@@ -31,9 +32,10 @@ export default {
       isLoading: true,
       unityContext: Unity,
       window: {
-        height: 1600,
-        width: 900,
+        height: 1000,
+        width: 1400,
       },
+
     };
   },
 
@@ -48,11 +50,40 @@ export default {
       this.window.width = window.innerWidth;
     },
 
-    sendGameMessage() {
-      // For future us:
-      // Unity.send('Gameplay', 'CreateSquares', numSquares);
-    },
+    //send walletID to GET request in Unity (ServerTalkerTest.Login())
+    sendLoginToUnity(myAddress) {  
+      var walletId = myAddress
+      Unity.send("EventSystem", "Login", walletId)
+      console.log(walletId)
+    },     
+
+
   },
+
+  mounted() {
+    //gets walletID and GET and sends to server
+    //returns "user" in json format and calls function
+    //to send user data to sendGameMessage
+    //wait 1s before sending message to unity
+    //so it can initialize
+    var myAddress = localStorage.getItem('userAddress')
+    setTimeout(() => {
+      this.sendLoginToUnity(myAddress)
+    }, 1000)
+  },
+  
+    // redundant GET for logging in, but will be good
+    // for getting full json response from server/db
+
+    // fetch('http://localhost:8000/user/'+ myAddress)
+    //   .then(async res => {
+    //     const user = await res.json()
+    //     console.log(user)
+    //     setTimeout(() => {
+    //     this.sendGameMessage(user)}, 1000)
+    //    })
+    //   .catch(err => console.log(err.message))  
+
 
   created() {
     this.setGameSize();
